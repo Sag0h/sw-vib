@@ -10,7 +10,7 @@ public class VibrationController {
 
     public VibrationController(Context context){
         this.context = context;
-        this.usePlateauStrategy(1000, 255, 5);
+        this.usePlateauStrategy(1000, 255, 1);
         this.vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
@@ -20,12 +20,16 @@ public class VibrationController {
 
 
 
-    public boolean vibrate(){
-        try {
-            return strat.vibrate(vibrator);
-        } catch (InterruptedException e) {
+    public boolean vibrate() {
+        if(vibrator.hasVibrator()){
+            try {
+                return strat.vibrate(vibrator);
+            } catch (InterruptedException e) {
+                return false;
+            }
+        }else{
+            System.out.println("This device has not vibration hardware.");
             return false;
         }
     }
-
 }
