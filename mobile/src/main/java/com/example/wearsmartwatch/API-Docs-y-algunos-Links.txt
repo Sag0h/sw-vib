@@ -1,0 +1,16 @@
+Comunicar SW y CELU:
+(no implemente nada de esto aun)
+
+https://developers.google.com/android/reference/com/google/android/gms/wearable/MessageClient
+
+https://stackoverflow.com/questions/35530442/creating-mobile-app-to-send-vibration-to-android-wearable?noredirect=1&lq=1
+
+VIBRATOR:
+
+https://developer.android.com/reference/android/os/Vibrator
+
+DOCUMENTO PDF PROYECTO HAPTIC
+https://docs.google.com/document/d/1BlOiSe7Ya18oDCGMSQCQBtLgGyQ2bWTti16N502k90c/edit
+
+PATRONES DE DISEÑO:
+https://refactoring.guru/es/design-patterns/structural-patterns
