@@ -1,6 +1,7 @@
 package com.example.wearsmartwatch;
 
-public abstract class FormatStrategy {
-    public abstract boolean vibrate();
+public interface FormatStrategy {
+
+    public long[] getPattern();
 
 }

@@ -18,8 +18,8 @@ public class VibrationController {
         this.strat = new PlateauStrategy(duration, intensity, repetitions);
     }
 
-    public void useDownwardSlopeStrategy(long duration, int pause, int repetitions){
-        this.strat = new DownwardSlopeStrategy(duration, pause, repetitions);
+    public void useDownwardSlopeStrategy(long duration, int repetitions, long pause){
+        this.strat = new SlopeStrategy(new LinearUpStrategy(duration, repetitions, pause));
     }
 
     public boolean vibrate() {
@@ -30,7 +30,6 @@ public class VibrationController {
                 return false;
             }
         }else{
-            System.out.println("This device has not vibration hardware.");
             return false;
         }
     }
