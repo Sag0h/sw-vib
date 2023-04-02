@@ -10,16 +10,20 @@ public class VibrationController {
 
     public VibrationController(Context context){
         this.context = context;
-        this.usePlateauStrategy(1000, 255, 1);
+        this.useUpwardSlopeStrategy(10000, 15, 250);
         this.vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     public void usePlateauStrategy(long duration, int intensity, int repetitions){
-        this.strat = new PlateauStrategy(duration, intensity, repetitions);
+        this.strat = null;
     }
 
-    public void useDownwardSlopeStrategy(long duration, int pause, int repetitions){
-        this.strat = new DownwardSlopeStrategy(duration, pause, repetitions);
+    public void useDownwardSlopeStrategy(long period, int vibrations, long pause){
+        this.strat = new SlopeStrategy(new LinearDownStrategy(period, vibrations, pause));
+    }
+
+    public void useUpwardSlopeStrategy(long period, int vibrations, long pause){
+        this.strat = new SlopeStrategy(new LinearUpStrategy(period, vibrations, pause));
     }
 
     public boolean vibrate() {

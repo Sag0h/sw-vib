@@ -39,7 +39,7 @@ private ActivityMainBinding binding;
                 button1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        setContentView(R.layout.plateau_input_layout);
+                        setContentView(R.layout.parameter_input_layout);
 
                         // Obtener las referencias a los EditText
                         EditText editText1 = findViewById(R.id.editText1);
@@ -83,10 +83,45 @@ private ActivityMainBinding binding;
                 button2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Acciones para el botón 2
+                        setContentView(R.layout.parameter_input_layout);
+
+                        // Obtener las referencias a los EditText
+                        EditText editText1 = findViewById(R.id.editText1);
+                        EditText editText2 = findViewById(R.id.editText2);
+                        EditText editText3 = findViewById(R.id.editText3);
+
+                        System.out.println(editText1.getText().toString());
+                        Button submitButton = findViewById(R.id.submit_button);
+
+
+                        submitButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                int repetitions, intensity;
+                                long duration;
+                                try{
+                                    duration = Long.parseLong(editText1.getText().toString());
+                                }catch(Exception e) {
+                                    duration = 1000;
+                                };
+
+                                try{
+                                    intensity = Integer.parseInt(editText2.getText().toString());
+                                }catch (Exception e){
+                                    intensity = 127;
+                                }
+
+                                try {
+                                    repetitions = Integer.parseInt(editText3.getText().toString());
+                                }catch (Exception e){
+                                    repetitions = 1;
+                                }
+                                vc.useDownwardSlopeStrategy(duration, intensity, repetitions);
+                                setContentView(binding.getRoot());
+                            }
+                        });
                     }
                 });
-
                 Button button3 = findViewById(R.id.upwardslope_button);
                 button3.setOnClickListener(new View.OnClickListener() {
                     @Override
