@@ -19,14 +19,22 @@ public class VibrationController {
     }
 
     public void useDownwardSlopeStrategy(long duration, int repetitions, long pause){
+        this.strat = new SlopeStrategy(new LinearDownStrategy(duration, repetitions, pause));
+    }
+
+    public void useUpwardSlopeStrategy(long duration, int repetitions, long pause){
         this.strat = new SlopeStrategy(new LinearUpStrategy(duration, repetitions, pause));
+    }
+
+    public void useHillStrategy(){
+        this.strat = new HillStrategy(5000);
     }
 
     public boolean vibrate() {
         if(vibrator.hasVibrator()){
             try {
                 return strat.vibrate(vibrator);
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 return false;
             }
         }else{

@@ -5,6 +5,6 @@ import android.os.Vibrator;
 
 public interface VibrationStrategy {
 
-    boolean vibrate(Vibrator vibrator) throws InterruptedException;
+    boolean vibrate(Vibrator vibrator);
 
 }

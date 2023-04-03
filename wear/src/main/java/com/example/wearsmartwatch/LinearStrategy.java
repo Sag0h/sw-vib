@@ -22,7 +22,7 @@ public abstract class LinearStrategy implements FormatStrategy {
             if(i%2 == 0){
                 pattern[i] = pauseTime;
             }else{
-                pattern[i] = totalVibrationTime/vibrations;
+                pattern[i] = totalVibrationTime/vibrations; // dividir por 0 se rompe.
                 totalVibrationTime -= totalVibrationTime/vibrations;
             }
         }
