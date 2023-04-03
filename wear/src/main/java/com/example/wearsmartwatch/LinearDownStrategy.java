@@ -5,8 +5,4 @@ public class LinearDownStrategy extends LinearStrategy{
         super(period, vibrations, pause);
     }
 
-    @Override
-    public long[] getPattern() {
-        return super.getPattern();
-    }
 }

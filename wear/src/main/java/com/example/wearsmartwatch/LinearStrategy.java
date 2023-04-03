@@ -11,23 +11,30 @@ public abstract class LinearStrategy implements FormatStrategy {
         this.pauseTime = pause;
     }
 
+    public boolean checkData(){
+        return (period > 0) && (vibrations > 0) && (period <= (pauseTime*vibrations));
+    }
+
+    private long assignValues(int index, long totalVibrationTime, long[] pattern){
+        if(index%2 == 0){
+            pattern[index] = pauseTime;
+        }else{
+            pattern[index] = totalVibrationTime/vibrations;
+            return totalVibrationTime/vibrations;
+        }
+        return 0;
+    }
     public long[] getPattern(){
-        while (period <= pauseTime*vibrations){
-            pauseTime -= 50;
-        }
-        long totalVibrationTime =  period - (long)(pauseTime * vibrations);
-        long[] pattern = new long[(vibrations*2) +1];
-        pattern[0] = pauseTime;
-        for(int i=1; i<pattern.length; i++){
-            if(i%2 == 0){
-                pattern[i] = pauseTime;
-            }else{
-                pattern[i] = totalVibrationTime/vibrations; // dividir por 0 se rompe.
-                totalVibrationTime -= totalVibrationTime/vibrations;
+        if(this.checkData()){
+            long totalVibrationTime =  period - (long)(pauseTime * vibrations);
+            long[] pattern = new long[(vibrations*2) +1];
+            pattern[0] = pauseTime;
+            for(int i=1; i<pattern.length; i++){
+                totalVibrationTime -= this.assignValues(i, totalVibrationTime, pattern);
             }
+            return pattern;
         }
-        pattern[(vibrations*2)] = pauseTime;
-        return pattern;
+        return new long[0];
     }
 
 }
