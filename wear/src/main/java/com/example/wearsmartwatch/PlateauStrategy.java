@@ -20,25 +20,14 @@ public class PlateauStrategy implements VibrationStrategy {
         return duration;
     }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
     public int getIntensity() {
         return intensity;
-    }
-
-    public void setIntensity(int intensity) {
-        this.intensity = intensity;
     }
 
     public int getRepetitions() {
         return repetitions;
     }
 
-    public void setRepetitions(int repetitions) {
-        this.repetitions = repetitions;
-    }
 
     @Override
     public boolean vibrate(Vibrator vibrator) {

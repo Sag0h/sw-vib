@@ -14,3 +14,22 @@ https://docs.google.com/document/d/1BlOiSe7Ya18oDCGMSQCQBtLgGyQ2bWTti16N502k90c/
 
 PATRONES DE DISEÑO:
 https://refactoring.guru/es/design-patterns/structural-patterns
+
+Abstract Factory para ver que version usar.
+Por ahora tengo que:
+- Implementar los distintos tipos de vibracion a bajo nivel con las dos versiones de la api de android
+(ya tengo casi todos los de la version <26)
+- Los distintos tipos de vibracion deberian poder: vibrar una vez, vibrar x veces ,repetirse indefinidamente,
+parar dado una condicion, vibrar repetidamente con pausas de x tiempo, posponer por x tiempo
+
+Hay cuatro cosas a tener en cuenta:
+ * Que version de la API se va a usar (si va a vibrar con AmplitudControl de la api 26 para arriba o con prendidos
+ y apagados de distinta duracion)
+ * Cuando va a vibrar(como el usuario va a decirle a mi framework que tiene que
+empezar a vibrar)
+ * Como va a vibrar(tipo de vibracion, tiempo, si se va a repetir)
+ * Cuando va a parar( como el usuario va a decirle a mi framework que tiene que dejar de vibrar)
+
+//
+las strategy que tengo no van, seria un objeto por cada tipo de vibracion, y esos objetos tienen otros objetos
+para las estrategias de repeticion, o lo que necesiten.
